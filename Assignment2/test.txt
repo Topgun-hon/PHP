@@ -1,8 +1,8 @@
-Hello
-I am learning PHP 
-File handling is fun
-This line was added
- This line was added
-This line was added
-This line was added
-This line was added
+<b>Hello</b>
+I am learning PHP <br>
+File handling is fun  <br>
+This line was added <br>
+This line was added <br>
+This line was added <br>
+This line was added <br>
+This line was added <br>
