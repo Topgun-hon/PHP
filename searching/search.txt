@@ -1,0 +1,3 @@
+I am honore and i am making 
+a test on strpos()function 
+in php.
