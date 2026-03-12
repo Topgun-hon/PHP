@@ -14,6 +14,7 @@ if(isset($_POST['submit'])){
     $result = $conn->query($sql);
 
     if($result == true){
+        echo '<br>';
         echo 'New record inserted successfully!';
     }else{
         echo 'Error:'.$sql.'<br>'.$conn->error;
