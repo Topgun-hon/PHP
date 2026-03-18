@@ -21,8 +21,6 @@ echo "<table border='1'>
 <th>Email</th>
 <th>Password</th>
 </tr>";
-
-
 if($result->num_rows >0){
     while($row = $result->fetch_assoc()){
         echo "<tr>";
@@ -31,6 +29,7 @@ if($result->num_rows >0){
         echo "<td>".$row['email']."</td>";
         echo "<td>".$row['password']."</td>";
         echo "</tr>";
+
     }
 }
 
