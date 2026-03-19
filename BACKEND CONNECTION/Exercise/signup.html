@@ -1,40 +1,10 @@
-<?php
-
-require "connection2.php";
-
-if(isset($_POST['submit'])){
-
-    $login_username = $_POST['username'];
-    $login_password = md5($_POST['password']);
-
-    $stmt = connection->prepare("SELECT username,password FROM signedin WHERE username = ?");
-    $stmt->bind_param('s',$username);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-
-    if($result->num_rows > 0){
-        $user = $result->fetch_assoc();
-
-        if($login_password != $user['password'] && $login_username != $user['username']){
-            header("location: homepage.html");
-        }
-        else{
-            echo "<script>alert('Invalid username or password')</script>";
-        }
-    }else{
-        echo "<script>alert('User not found')</script>";
-    }
-
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in | My App</title>
+    <title>Sign Up</title>
+
     <style>
         :root {
             --primary: #2a62ff;
@@ -52,7 +22,7 @@ if(isset($_POST['submit'])){
 
         body {
             margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
             background: radial-gradient(circle at top, #dbe7ff, var(--background));
             color: var(--text);
             min-height: 100vh;
@@ -79,7 +49,6 @@ if(isset($_POST['submit'])){
         .brand h1 {
             margin: 0;
             font-size: 1.8rem;
-            letter-spacing: 0.04em;
         }
 
         .brand p {
@@ -98,18 +67,16 @@ if(isset($_POST['submit'])){
             font-weight: 600;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        input {
             width: 100%;
             padding: 12px 14px;
             font-size: 1rem;
             border: 1px solid rgba(0,0,0,0.15);
             border-radius: 10px;
-            transition: border 0.2s ease, box-shadow 0.2s ease;
+            transition: 0.2s;
         }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
+        input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(42, 98, 255, 0.18);
@@ -124,7 +91,6 @@ if(isset($_POST['submit'])){
             color: white;
             font-size: 1rem;
             cursor: pointer;
-            transition: background 0.2s ease;
         }
 
         .button:hover {
@@ -152,38 +118,49 @@ if(isset($_POST['submit'])){
             background: rgba(255, 76, 66, 0.12);
             border: 1px solid rgba(255, 76, 66, 0.2);
             color: #a82b2b;
-            padding: 12px 14px;
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
+        }
+
+        .success {
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: #1e7e34;
         }
     </style>
 </head>
+
 <body>
-    <main class="container" aria-label="Login form">
+    <main class="container">
         <section class="brand">
-            <h1>Welcome Back</h1>
-            <p>Sign in to continue to your account.</p>
+            <h1>Create Account</h1>
+            <p>Sign up to get started.</p>
         </section>
-
-        <form method="POST">
+    
+        <form method="POST" action="signup_db.php">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
+                <label>Username</label>
+                <input type="text" name="username" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required autocomplete="current-password">
+                <label>Email</label>
+                <input type="email" name="email" required>
             </div>
 
-            <button type="submit" name="submit" class="button">Sign in</button>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" name="submit" class="button">Sign Up</button>
         </form>
 
         <div class="footer">
-            <span>Don't have an account?</span>
-            <a href="signup.html">Sign up</a>
+            <span>Already have an account?</span>
+            <a href="login.php">Sign in</a>
         </div>
     </main>
 </body>
 </html>
-
