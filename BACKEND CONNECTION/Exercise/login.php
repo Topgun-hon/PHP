@@ -1,31 +1,31 @@
 <?php
 
-require "connection2.php";
+require 'connection2.php';
 
-if(isset($_POST['submit'])){
-
+if (isset($_POST['submit'])) {
     $login_username = $_POST['username'];
     $login_password = md5($_POST['password']);
 
-    $stmt = connection->prepare("SELECT username,password FROM signedin WHERE username = ?");
-    $stmt->bind_param('s',$username);
+    $stmt = $connection->prepare('SELECT username,password FROM signedin WHERE username = ?');
+    $stmt->bind_param('s', $login_username);
     $stmt->execute();
 
     $result = $stmt->get_result();
 
-    if($result->num_rows > 0){
+    if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        if($login_password != $user['password'] && $login_username != $user['username']){
-            header("location: homepage.html");
-        }
-        else{
+        if ($login_password === $user['password']) {
+            session_start();
+            $_SESSION['username'] = $user['username'];
+            header('Location: homepage.php');
+            exit;
+        } else {
             echo "<script>alert('Invalid username or password')</script>";
         }
-    }else{
+    } else {
         echo "<script>alert('User not found')</script>";
     }
-
 }
 
 ?>
