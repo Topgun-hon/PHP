@@ -1,5 +1,4 @@
 <?php
-
 require 'connection2.php';
 
 if(isset($_POST['submit'])){
