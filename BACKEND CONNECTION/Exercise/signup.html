@@ -1,166 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        :root {
-            --primary: #2a62ff;
-            --background: #f3f6ff;
-            --card: #ffffff;
-            --text: #1c1c27;
-            --muted: #575d6a;
-            --radius: 14px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+      :root {
+        --primary: #4f46e5;
+        --primary-dark: #4338ca;
+        --surface: #ffffff;
+        --text: #111827;
+        --text-secondary: #6b7280;
+        --border: #e5e7eb;
+        --radius: 12px;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
 
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-            background: radial-gradient(circle at top, #dbe7ff, var(--background));
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-        }
+      body {
+        margin: 0;
+        font-family:
+          "Outfit",
+          -apple-system,
+          BlinkMacSystemFont,
+          system-ui,
+          sans-serif;
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
 
-        .container {
-            width: min(420px, 100%);
-            background: var(--card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 32px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
+      .container {
+        width: min(440px, 100%);
+        background: var(--surface);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        padding: 2.5rem;
+        border: 1px solid var(--border);
+      }
 
-        .brand {
-            text-align: center;
-            margin-bottom: 24px;
-        }
+      .brand {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
 
-        .brand h1 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
+      .brand h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.5px;
+      }
 
-        .brand p {
-            margin: 4px 0 0;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
+      .brand p {
+        margin: 0.75rem 0 0;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+      .form-group {
+        margin-bottom: 1.25rem;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
 
-        input {
-            width: 100%;
-            padding: 12px 14px;
-            font-size: 1rem;
-            border: 1px solid rgba(0,0,0,0.15);
-            border-radius: 10px;
-            transition: 0.2s;
-        }
+      input {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: #fafbfc;
+        font-family: inherit;
+      }
 
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(42, 98, 255, 0.18);
-        }
+      input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: var(--surface);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
 
-        .button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: var(--primary);
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+      .button {
+        width: 100%;
+        padding: 0.875rem;
+        border: none;
+        border-radius: 8px;
+        background: var(--primary);
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+      }
 
-        .button:hover {
-            background: #1e4ad8;
-        }
+      .button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+      }
 
-        .footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
+      .button:active {
+        transform: translateY(0);
+      }
 
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
+      .footer {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
+      .footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
 
-        .message {
-            background: rgba(255, 76, 66, 0.12);
-            border: 1px solid rgba(255, 76, 66, 0.2);
-            color: #a82b2b;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-        }
+      .footer a:hover {
+        color: var(--primary-dark);
+      }
 
-        .success {
-            background: rgba(46, 204, 113, 0.12);
-            border: 1px solid rgba(46, 204, 113, 0.3);
-            color: #1e7e34;
-        }
+      .hint {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #f0f9ff;
+        border-left: 3px solid var(--primary);
+        border-radius: 6px;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .success {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #047857;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="container">
-        <section class="brand">
-            <h1>Create Account</h1>
-            <p>Sign up to get started.</p>
-        </section>
-    
-        <form method="POST" action="signup_db.php">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" required>
-            </div>
+      <section class="brand">
+        <h1>Create Your Account</h1>
+        <p>Sign up now and log in to access your personal task dashboard.</p>
+      </section>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" required>
-            </div>
-
-            <button type="submit" name="submit" class="button">Sign Up</button>
-        </form>
-
-        <div class="footer">
-            <span>Already have an account?</span>
-            <a href="login.php">Login</a>
+      <form method="POST" action="signup_db.php">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" name="username" required />
         </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" required />
+        </div>
+
+        <button type="submit" name="submit" class="button">Sign Up</button>
+      </form>
+
+      <div class="hint">
+        After signing up, log in to manage tasks, edit entries, and delete items
+        directly from your dashboard.
+      </div>
+
+      <div class="footer">
+        <span>Already have an account?</span>
+        <a href="login.php">Login</a>
+      </div>
     </main>
-</body>
+  </body>
 </html>
