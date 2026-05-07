@@ -63,13 +63,16 @@ switch ($method) {
         );
 
         // Escape user inputs
-        $name = $conn->real_escape_string($data['name']);
+        $fname = $conn->real_escape_string($data['fname']);
+        $lname = $conn->real_escape_string($data['lname']);
         $email = $conn->real_escape_string($data['email']);
+        $password = $conn->real_escape_string($data['password']);
+        $gender = $conn->real_escape_string($data['gender']);
 
         // Insert new user
         $conn->query(
-            "INSERT INTO users (name, email)
-             VALUES ('$name', '$email')"
+            "INSERT INTO users (fname, lname, email, password, gender)
+             VALUES ('$fname','$lname', '$email', '$password', '$gender')"
         );
 
         echo json_encode([
