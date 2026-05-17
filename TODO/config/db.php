@@ -1,16 +1,22 @@
 <?php
 
 $host = 'localhost';
+$dbname = 'todo';
 $username = 'honore';
-$db_name = 'todo';
 $password = 'topgun';
 
-$connection = new mysqli($host, $username, $password, $db_name);
+try {
+    $pdo = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8");
 
-if (!$connection) {
-    exit('Connection failed' . mysqli_connect_error());
+    $pdo->setAttribute(
+        PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION
+    );
+} catch (PDOException $e) {
+    die(json_encode([
+        'success' => false,
+        'message' => $e->getMessage()
+    ]));
 }
-
-echo 'Connected successful';
 
 ?>
