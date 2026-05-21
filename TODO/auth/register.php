@@ -27,10 +27,6 @@ try {
         'success' => true,
         'message' => 'User registered successfully'
     ]);
-    // echo json_encode([
-    //     'success' => false,
-    //     'message' => 'User registered successfully'
-    // ]);
 } catch (PDOException $error) {
     echo json_encode([
         'success' => false,
