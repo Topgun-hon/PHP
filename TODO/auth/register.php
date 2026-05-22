@@ -23,6 +23,12 @@ try {
         ':gender' => $gender,
         ':password' => $hashed_password
     ]);
+    // $stmt->execute([
+    //     ':name' => $name,
+    //     ':email' => $email,
+    //     ':gender' => $gender,
+    //     ':password' => $hashed_password
+    // ]);
     echo json_encode([
         'success' => true,
         'message' => 'User registered successfully'
