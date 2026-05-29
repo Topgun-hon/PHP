@@ -14,6 +14,7 @@ class Test extends Secure
 }
 
 $class = new Test();
-// OOP
+// OOP structures do not allow to access protected properties outside of the class or its subclasses
+// echo $class->secrete; // This will cause an error
 
 ?>
