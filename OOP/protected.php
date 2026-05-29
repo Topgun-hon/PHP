@@ -14,6 +14,6 @@ class Test extends Secure
 }
 
 $class = new Test();
-echo $class->print();
+// OOP
 
 ?>
